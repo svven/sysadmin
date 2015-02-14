@@ -36,7 +36,7 @@ if [ ! -f .ssh/known_hosts ]; then
 fi
 
 ## Set private key
-if [ -n "$PRIVATE_KEY" ]; then
+if [ $PRIVATE_KEY ]; then
     curl -L $PRIVATE_KEY > .ssh/id_rsa
     chmod 600 .ssh/id_rsa
 fi
@@ -48,7 +48,7 @@ if [ ! -f .bash_profile ]; then
 fi
 
 ## Set public key (optional)
-if [ -n "$PUBLIC_KEY" ]; then
+if [ $PUBLIC_KEY ]; then
     curl -L $PUBLIC_KEY > .ssh/id_rsa.pub
     cat .ssh/id_rsa.pub > .ssh/authorized_keys
     chmod 600 .ssh/authorized_keys
