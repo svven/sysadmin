@@ -9,8 +9,7 @@ if [ $# -lt 1 ]; then
 ##   1 - User private (deployment) key (i.e. URL to id_rsa)
 ## Optional:
 ##   2 - User public key for SSH access (i.e. URL to id_rsa.pub)
-##############################################################################
-"
+##############################################################################"
     exit 1
 fi
 
@@ -22,19 +21,24 @@ cd $HOME # /home/$USER
 
 ## Prepare ssh directory
 if [ ! -d .ssh ]; then
-    mkdir .ssh && chmod 700 .ssh
+    mkdir .ssh
+    chmod 700 .ssh
 fi
 
 ## Add known hosts
 if [ ! -f .ssh/known_hosts ]; then
-    touch .ssh/known_hosts && chmod 600 .ssh/known_hosts
-    ssh-keygen -R github.org; ssh-keyscan -H github.org >> .ssh/known_hosts
-    ssh-keygen -R bitbucket.org; ssh-keyscan -H bitbucket.org >> .ssh/known_hosts
+    touch .ssh/known_hosts
+    chmod 600 .ssh/known_hosts
+    ssh-keygen -R github.org
+    ssh-keyscan -H github.org >> .ssh/known_hosts
+    ssh-keygen -R bitbucket.org
+    ssh-keyscan -H bitbucket.org >> .ssh/known_hosts
 fi
 
 ## Set private key
 if [ $PRIVATE_KEY ]; then
-    curl -L $PRIVATE_KEY > .ssh/id_rsa && chmod 600 .ssh/id_rsa
+    curl -L $PRIVATE_KEY > .ssh/id_rsa
+    chmod 600 .ssh/id_rsa
 fi
 
 ## Set ssh agent

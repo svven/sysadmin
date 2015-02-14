@@ -8,7 +8,7 @@ if [ $# -lt 2 ]; then
     echo "## Missing arguments:
 ##   1 - Private repo (e.g.: git@github.com:svven/provision.git)
 ##   2 - Deployment key (i.e. URL to id_rsa)
-"
+##############################################################################"
     exit 1
 fi
 
