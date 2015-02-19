@@ -29,11 +29,11 @@ fi
 if [ ! -f .ssh/known_hosts ]; then
     touch .ssh/known_hosts
     chmod 600 .ssh/known_hosts
-    ssh-keygen -R github.org
-    ssh-keyscan -H github.org >> .ssh/known_hosts
-    ssh-keygen -R bitbucket.org
-    ssh-keyscan -H bitbucket.org >> .ssh/known_hosts
 fi
+ssh-keygen -R github.org
+ssh-keyscan -H github.org >> .ssh/known_hosts
+ssh-keygen -R bitbucket.org
+ssh-keyscan -H bitbucket.org >> .ssh/known_hosts
 
 ## Set private key
 if [ $PRIVATE_KEY ]; then
